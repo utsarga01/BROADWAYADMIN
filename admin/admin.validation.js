@@ -7,3 +7,7 @@ export const registerAdminValidationSchema = Yup.object({
   lastName: Yup.string().required().trim().max(30).lowercase(),
 });
 
+export const loginAdminValidationSchema = Yup.object({
+    email:Yup.string().email().required().trim().lowercase(),
+    password:Yup.string().required().trim(),
+});
