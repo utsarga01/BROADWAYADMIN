@@ -27,6 +27,6 @@ const courseSchema = new mongoose.Schema({
 });
 
 //create model/table
-const Course =mongoose.model("Course", courseSchema);
+const Course = mongoose.model("Course", courseSchema);
 
 export default Course;

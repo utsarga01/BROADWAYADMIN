@@ -44,6 +44,30 @@ router.post(
       return res.status(401).send({ message: "Unauthorized" });
     }
 
+    /*
+    let payload;
+    try
+    {
+    const sign = "hbfuyhwef";
+    payload = jwt.verify(token,sign);
+    }catch(error){
+    return res.status(401).send({message:"Unauthorized"});
+    }
+    finding the admin using payload
+
+    const admin = await Admin.findOne({email:payload.email});
+    this line helps in authenticating the admin by making sure that the email in the token payload 
+    corresponds to the valid email in the database. if the matching admin is found the request is allowed to proceed
+    else unauthorized error is returned.
+
+    if(!admin) {
+     return res.status(401).send({message:"Unauthorized"};)  
+    
+    }
+
+     
+    */
+
     req.loggedInUserId = admin._id;
 
     //call next function
@@ -125,7 +149,8 @@ router.get(
           name: 1,
           price: 1,
           duration: 1,
-          adminEmail: { $first: "$adminData.email" },
+          adminEmail: { $first: "$adminData.email" },//extracts the email of the first admin document in the admin data array 
+          //and assigns it to the adminEmail field in the output documents. 
         },
       },
     ]);
